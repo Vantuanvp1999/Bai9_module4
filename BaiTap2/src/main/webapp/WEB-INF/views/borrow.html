@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Đã mượn sách</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { color: #2c3e50; }
+    .code-box {
+      background-color: #f1f8e9;
+      border: 1px dashed #2ecc71;
+      padding: 20px;
+      margin: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    a { text-decoration: none; color: #3498db; }
+  </style>
+</head>
+<body>
+
+<h1>Bạn đã mượn sách thành công!</h1>
+
+<p>Mã mượn sách của bạn là:</p>
+
+<div class="code-box" th:text="${code}">12345</div>
+
+<p>Vui lòng ghi nhớ hoặc lưu lại mã này để trả sách sau.</p>
+
+<p>
+  <a href="/books">Quay lại danh sách sách</a><br>
+  <a href="/books/return">Trả sách</a>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách sách</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { color: #2c3e50; }
+    table {
+      width: 100%; border-collapse: collapse; margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc; padding: 10px; text-align: left;
+    }
+    th { background-color: #f7f7f7; }
+    a.borrow-link {
+      background-color: #27ae60; color: white;
+      padding: 5px 10px; text-decoration: none; border-radius: 4px;
+    }
+    a.borrow-link:hover { background-color: #219150; }
+  </style>
+</head>
+<body>
+
+<h1>Danh sách sách trong thư viện</h1>
+
+<p>
+  <a href="/books/create">Thêm sách mới</a>
+</p>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Tên sách</th>
+    <th>Số lượng còn</th>
+    <th>Hành động</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="book : ${books}">
+    <td th:text="${book.title}">Tên sách</td>
+    <td th:text="${book.quantity}">0</td>
+    <td>
+      <a th:href="@{'/books/' + ${book.id} + '/borrow'}"
+         th:if="${book.quantity > 0}"
+         class="borrow-link">Mượn</a>
+      <span th:if="${book.quantity == 0}" style="color: red;">Hết sách</span>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<p style="margin-top: 30px;">
+  <a href="/books/return">Trả sách</a>
+</p>
+
+</body>
+</html>
